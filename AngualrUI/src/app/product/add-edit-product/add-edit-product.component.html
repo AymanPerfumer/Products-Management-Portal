@@ -1,0 +1,47 @@
+<div class="d-flex flex-row bd-highlight mb-3">
+
+  <div class="form-froup row" style="width: 100%;">
+
+    <label class="col-sm-2 col-form-label">Title</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" [(ngModel)]="Title"
+             placeholder="Enter Product Name">
+    </div>
+
+    <label class="col-sm-2 col-form-label">Description</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" [(ngModel)]="Description"
+             placeholder="Enter Description">
+    </div>
+
+    <label class="col-sm-2 col-form-label">Price</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" [(ngModel)]="Price"
+             placeholder="Enter Description">
+    </div>
+
+    <label class="col-sm-2 col-form-label">Category</label>
+    <div class="col-sm-10">
+      <select class="form-control" [(ngModel)]="Category">
+        <option>--Select--</option>
+        <option *ngFor="let category of CategoriesList">
+          {{category.title}}
+        </option>
+      </select>
+    </div>
+
+  </div>
+  <div class="ml-3 bd-highlight" style="width: 30%;">
+    <img [src]="PhotoFilePath" height="180px;" width="150;">
+    <input type="file" (change)="uploadPhoto($event)" class="mt-2" />
+  </div>
+</div>
+
+
+<button (click)="addProduct()" *ngIf="product.ProductId==''" class="btn btn-primary">
+  Add
+</button>
+
+<button (click)="updateProduct()" *ngIf="product.ProductId!=''" class="btn btn-primary">
+  Update
+</button>
